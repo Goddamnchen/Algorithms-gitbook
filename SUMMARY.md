@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Algorithms](README.md)
+* [README](README.md)
 * [Union-Find](union-find.md)
 * [Union-Find Application](union-find-application.md)
 * [Selection Sort](selection-sort.md)
