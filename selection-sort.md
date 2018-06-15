@@ -9,11 +9,11 @@ When talking about sort problem, we want to build a model which could sort an un
 ![Problem example: unordered sequence](.gitbook/assets/image%20%2824%29.png)
 
 * **Abstraction**: 
-  * Firstly, we naturally use `array[N]` to abstract these unordered sequence and its constituents.
+  * Firstly, we naturally use `array[N]` to abstract these unordered items and their sequence.
   * With the ordered index sequence of array, we want to sort these unordered objects, corresponding to array index.
 * **Define** _**selection**_ ****
   * _Selection_ is the crucial way that we sort. The basic idea of selection is that we repeatedly select an object which is the **smallest** one **in certain range of sequence** AND place the smallest object to the first index of this range of sequence.
-  * In this case, we exert iteration stating from the first index of array. In `iteration i`, find index `min` of smallest **in remaining objects** and put it to `array[i]`
+  * In this case, we exert iteration starting from the first index of array. In `iteration i`, find index `min` of smallest **in remaining objects** and put it to `array[i]`
 * **Consider invariant**
   * For selection sort, we have an pointer or `iteration i` scanning from left to right.  To each iteration, the invariant is that the left side of pointer is sorted, which is UNCHANGEABLE, and the pointer ALWAYS point to the smallest objects among the right of pointer, which is unsorted.
 

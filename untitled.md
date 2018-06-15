@@ -1,12 +1,17 @@
-# Untitled
+# Insertion Sort
 
-## Can I become who I want to be?
+## Model Design
 
-That's a tough question but thankfully, our team is on it. Please bear with us while we're investigating.
+### Insertion Sort Problem
 
-## Have you had a chance to answer the previous question?
+To avoid exerting redundant comparing operation when already having parts of ordered objects, we come out with this new sort algorithms, which is more efficient than selection sort.
 
-Yes, after a few months we finally found the answer. Sadly, Mike is on vacations right now so I'm afraid we are not able to provide the answer at this point.
+* **Abstraction**: 
+  * Use`array[N]` to abstract these unordered objects 
+  * Sort items, corresponding to the sequence of ordered index of array.
+* **Define** _**insertion**_
+  * The idea of insertion is that we want 
+* **Consider invariant**
 
 
 
