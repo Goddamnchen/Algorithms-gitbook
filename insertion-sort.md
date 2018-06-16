@@ -17,5 +17,13 @@ To avoid exerting redundant comparing operation when already having parts of ord
 
 ![](.gitbook/assets/image%20%2811%29.png)
 
+Therefore, the insertion sort model turns out to be:
 
+1. Strat from `Iteration i`
+2. Compare current `array[i]` with it's left `array[i-1], i > 0 ;`
+   * if `array[i - 1] <= array[i]`, iterate to `i + 1;`
+   * else if `array[i - 1] > array[i], swap(a[i], a[i-1])`, then iterate to `i - 1;`
+3. Go to step 2
+
+## Algorithm Analysis
 
