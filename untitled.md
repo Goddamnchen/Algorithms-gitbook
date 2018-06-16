@@ -10,7 +10,7 @@ To avoid exerting redundant comparing operation when already having parts of ord
   * Use`array[N]` to abstract these unordered objects 
   * Sort items, corresponding to the sequence of ordered index of array.
 * **Define** _**insertion**_
-  * The idea of insertion is that we want 
+  * The idea of insertion is that we want to
 * **Consider invariant**
 
 
