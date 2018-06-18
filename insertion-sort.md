@@ -27,3 +27,26 @@ Therefore, the insertion sort model turns out to be:
 
 ## Algorithm Analysis
 
+The core operations in insertion sort process is the same as  **compare** and **swap** in selection sort. So we will skip the detail of support methods `less()` and `swap()`, and directly call them in our integral code implementation.
+
+### Code implementation
+
+{% code-tabs %}
+{% code-tabs-item title="InsertionSort java implementation" %}
+```java
+public class InsertionSort {
+    public static void sort(Comparable a[]) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (less(a[j], a[j - 1]) swap(a, j, j - 1);
+                else break;
+            }
+        }
+    }       
+     private static boolean less(Comparable a, Comparable b) {/* saem as selection sort */}
+     private static void swap(Comparable[] a, int i, int j) {/* same as selection sort */}
+ }
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+

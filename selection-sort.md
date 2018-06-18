@@ -56,7 +56,7 @@ With these support modules, all we left to do is building iteration in main meth
 {% code-tabs %}
 {% code-tabs-item title="Selection sort java implementation " %}
 ```java
- public class Selection {
+ public class SelectionSort {
      public static void sort(Comparable[] a) {
          int N = a.length;
          for (int i = 0; i < N; i++) {
