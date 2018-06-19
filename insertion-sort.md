@@ -87,8 +87,10 @@ In this case, we recognize that 1-sorting is actually the same as insertion sort
 
 The principle of shell sort has two main benefits which directly give rise to a better performance:
 
+{% hint style="success" %}
 1. Big increments  --&gt; small subarray, which can be sorted quickly by whatever ways of sort.
 2. Small increments --&gt; nearly in order, which only use linear time to sort by 1-sorting.
+{% endhint %}
 
 ####  Code implementation
 
@@ -115,4 +117,14 @@ public class ShellSort {
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
+
+#### Asymptotic Analysis
+
+The analysis of shell sort is still open and undefined  completely. For now we only know the worst-case number of compares used by shellsort with the `3x + 1` increments is `O(N^3/2).`
+
+However,  we do know shellsort is a example of a simple idea leading to substantial performance gains. It is very practical especially in applications of small system. Because:
+
+* Fast unless array size is huge
+* Tiny and fixed amount of code, which is comportable for embedded system
+* Hardware sort prototype
 
