@@ -10,5 +10,7 @@
 
 {% page-ref page="selection-sort.md" %}
 
+{% page-ref page="insertion-sort.md" %}
+
 
 

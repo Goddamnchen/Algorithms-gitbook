@@ -90,3 +90,29 @@ The principle of shell sort has two main benefits which directly give rise to a 
 1. Big increments  --&gt; small subarray, which can be sorted quickly by whatever ways of sort.
 2. Small increments --&gt; nearly in order, which only use linear time to sort by 1-sorting.
 
+####  Code implementation
+
+{% code-tabs %}
+{% code-tabs-item title="Shell sort with 3x + 1 increament sequence" %}
+```java
+public class ShellSort {
+    public static void sort(Comparable a[]) {
+        int h = 1;
+        while (h < a.length / 3) h = 3 * h + 1;        // 3x + 1 increment sequence
+        while (h >= 1) {        //start h-sorting
+            for (int i = h; i < a.length; i++) {    // i <= a.length -1 
+                for (int j = i; j >= h; j -= h) {
+                    if (less(a[j], a[j - h]) swap(a, j, j - 1);
+                    else break;
+                }
+            }
+            h = h / 3;
+        }
+    }       
+     private static boolean less(Comparable a, Comparable b) {/* saem as selection sort */}
+     private static void swap(Comparable[] a, int i, int j) {/* same as selection sort */}
+ }
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
