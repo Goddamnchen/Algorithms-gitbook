@@ -14,14 +14,14 @@ We could build this model with following steps:
   * Use `index` of array to represent objects 0 to N - 1 
   * Hide details relevant to object itself \(i.e. object attributes\)
 
-![Abstract example: Using index \[1-10\] to represent ten objects](.gitbook/assets/image%20%2839%29.png)
+![Abstract example: Using index \[1-10\] to represent ten objects](.gitbook/assets/image%20%2841%29.png)
 
 * **Define logic connection:**
   * Connect objects by partitioning different `Set`
   * Maximal `Set` of objects are mutually connected
   * Use information relevant to abstracted object \(i.e. array index\) to record connection,  such as the the array `value` of index.
 
-![Logic connection example: mutually connected objects are divided to 3 sets](.gitbook/assets/image%20%2830%29.png)
+![Logic connection example: mutually connected objects are divided to 3 sets](.gitbook/assets/image%20%2831%29.png)
 
 Now, if we want to connect  `object[2]` and `object[5]`, all objects will connect together except `object[0]`. Therefore, we could simply achieve their connection by merging connected components of these two objects.
 
@@ -113,7 +113,7 @@ _Root_  is  the component identifier of a unique set containing object\[i\].
 
 
 
-![Quick-union data structure example: Object\[i\] is indexing its parent if they are in same component](.gitbook/assets/image%20%2834%29.png)
+![Quick-union data structure example: Object\[i\] is indexing its parent if they are in same component](.gitbook/assets/image%20%2835%29.png)
 
 #### Code implementation
 
