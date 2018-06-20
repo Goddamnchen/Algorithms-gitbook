@@ -25,5 +25,3 @@ There is a common pitfall that programmer tends to pick a random integer belonge
 The key is random generated number from `[0, i]` or `[i, N - 1]` which has not been seen yet.
 {% endhint %}
 
-## Convex Hall
-
