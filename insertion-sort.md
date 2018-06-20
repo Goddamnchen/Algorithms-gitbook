@@ -79,11 +79,11 @@ To improve this, we introduce _shell sort**.**_
 
 Shell sort is also called _**h-sorting,**_ which represents the idea that move h position for EACH iteration rather than one.
 
-![h-sorting example: sorting elements with interval of 4](.gitbook/assets/image%20%2826%29.png)
+![h-sorting example: sorting elements with interval of 4](.gitbook/assets/image%20%2828%29.png)
 
 In this case, we recognize that 1-sorting is actually the same as insertion sort. And what shell sort does is to quickly sort long-path inversions in advance. After h-sorting array for a decreasing number of h,  we avoid sort pairs of inversions which are far from each other by moving one by one. And then we could use insertion sort with a better runtime performance.
 
-![shell sort example: a process of 3x + 1 increment sequence](.gitbook/assets/image%20%2839%29.png)
+![shell sort example: a process of 3x + 1 increment sequence](.gitbook/assets/image%20%2841%29.png)
 
 The principle of shell sort has two main benefits which directly give rise to a better performance:
 

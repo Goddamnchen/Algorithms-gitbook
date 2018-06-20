@@ -5,4 +5,5 @@
 * [Union-Find Application](union-find-application.md)
 * [Selection Sort](selection-sort.md)
 * [Insertion Sort](insertion-sort.md)
+* [Elementary Sorts Application](elementary-sorts-application.md)
 

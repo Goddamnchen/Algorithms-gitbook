@@ -14,18 +14,18 @@ We could build this model with following steps:
   * Use `index` of array to represent objects 0 to N - 1 
   * Hide details relevant to object itself \(i.e. object attributes\)
 
-![Abstract example: Using index \[1-10\] to represent ten objects](.gitbook/assets/image%20%2841%29.png)
+![Abstract example: Using index \[1-10\] to represent ten objects](.gitbook/assets/image%20%2843%29.png)
 
 * **Define logic connection:**
   * Connect objects by partitioning different `Set`
   * Maximal `Set` of objects are mutually connected
   * Use information relevant to abstracted object \(i.e. array index\) to record connection,  such as the the array `value` of index.
 
-![Logic connection example: mutually connected objects are divided to 3 sets](.gitbook/assets/image%20%2831%29.png)
+![Logic connection example: mutually connected objects are divided to 3 sets](.gitbook/assets/image%20%2833%29.png)
 
 Now, if we want to connect  `object[2]` and `object[5]`, all objects will connect together except `object[0]`. Therefore, we could simply achieve their connection by merging connected components of these two objects.
 
-![Connecting example: union two connected components to form a new connection ](.gitbook/assets/image%20%2824%29.png)
+![Connecting example: union two connected components to form a new connection ](.gitbook/assets/image%20%2826%29.png)
 
 Then, the model of dynamic connectivity problem turns out to be summarized as steps or operations to implement :  
 
@@ -46,7 +46,7 @@ To implement `Find()` and `Union(p, q)` operations of model, we use quick find a
 
 > id: each index of array`id[N]`, which represents an object, initially has a corresponding indexed value of itself, delegating N connected sets of single object. After connecting objects,  objects of a specific connected set will have a same **component identifier** of certain index, demonstrating that objects in this set are all connected to the indexed object.
 
-![Quick find data structure example: objects being connected have same component identifier](.gitbook/assets/image%20%2823%29.png)
+![Quick find data structure example: objects being connected have same component identifier](.gitbook/assets/image%20%2824%29.png)
 
 #### Code implementation
 
@@ -113,7 +113,7 @@ _Root_  is  the component identifier of a unique set containing object\[i\].
 
 
 
-![Quick-union data structure example: Object\[i\] is indexing its parent if they are in same component](.gitbook/assets/image%20%2835%29.png)
+![Quick-union data structure example: Object\[i\] is indexing its parent if they are in same component](.gitbook/assets/image%20%2837%29.png)
 
 #### Code implementation
 

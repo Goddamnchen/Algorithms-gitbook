@@ -12,5 +12,7 @@
 
 {% page-ref page="insertion-sort.md" %}
 
+{% page-ref page="elementary-sorts-application.md" %}
+
 
 

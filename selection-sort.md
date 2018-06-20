@@ -6,7 +6,7 @@
 
 When talking about sort problem, we want to build a model which could sort an unordered sequence be means of "_selection_".
 
-![Problem example: unordered sequence](.gitbook/assets/image%20%2825%29.png)
+![Problem example: unordered sequence](.gitbook/assets/image%20%2827%29.png)
 
 * **Abstraction**: 
   * Firstly, we naturally use `array[N]` to abstract these unordered items and their sequence.
