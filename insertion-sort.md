@@ -120,7 +120,7 @@ public class ShellSort {
 
 #### Asymptotic Analysis
 
-The analysis of shell sort is still open and undefined  completely. For now we only know the worst-case number of compares used by shellsort with the `3x + 1` increments is `O(N^3/2).`
+The analysis of shell sort is still open and undefined  completely. For now we only know the worst-case number of compares used by shellsort with the `3x + 1` increments is **`O(N^3/2)`**, which is **sub-quadratic**.
 
 However,  we do know shellsort is a example of a simple idea leading to substantial performance gains. It is very practical especially in applications of small system. Because:
 
