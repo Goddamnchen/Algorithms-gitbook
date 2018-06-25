@@ -1,5 +1,11 @@
 # README
 
+## Stacks and Queues
+
+{% page-ref page="stack.md" %}
+
+{% page-ref page="queue.md" %}
+
 ## Union-Find
 
 {% page-ref page="union-find.md" %}

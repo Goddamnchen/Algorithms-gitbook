@@ -1,6 +1,8 @@
 # Table of contents
 
 * [README](README.md)
+* [Stack](stack.md)
+* [Queue](queue.md)
 * [Union-Find](union-find.md)
 * [Union-Find Application](union-find-application.md)
 * [Selection Sort](selection-sort.md)
