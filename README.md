@@ -1,24 +1,24 @@
 # README
 
-## Stacks and Queues
+## [Bags, Stacks and Queues](bag-stacks-and-queues/)
 
-{% page-ref page="stack.md" %}
+{% page-ref page="bag-stacks-and-queues/stack.md" %}
 
-{% page-ref page="queue.md" %}
+{% page-ref page="bag-stacks-and-queues/queue.md" %}
 
-## Union-Find
+## [Union-Find](union-find-1/)
 
-{% page-ref page="union-find.md" %}
+{% page-ref page="union-find-1/union-find.md" %}
 
-{% page-ref page="union-find-application.md" %}
+{% page-ref page="union-find-1/union-find-application.md" %}
 
-## Elementary Sort
+## [Elementary Sort](elementary-sorts/)
 
-{% page-ref page="selection-sort.md" %}
+{% page-ref page="elementary-sorts/selection-sort.md" %}
 
-{% page-ref page="insertion-sort.md" %}
+{% page-ref page="elementary-sorts/insertion-sort.md" %}
 
-{% page-ref page="elementary-sorts-application.md" %}
+{% page-ref page="elementary-sorts/elementary-sorts-application.md" %}
 
 
 

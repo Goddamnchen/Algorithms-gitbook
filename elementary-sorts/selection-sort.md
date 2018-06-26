@@ -6,7 +6,7 @@
 
 When talking about sort problem, we want to build a model which could sort an unordered sequence be means of "_selection_".
 
-![Problem example: unordered sequence](.gitbook/assets/image%20%2827%29.png)
+![Problem example: unordered sequence](../.gitbook/assets/image%20%2827%29.png)
 
 * **Abstraction**: 
   * Firstly, we naturally use `array[N]` to abstract these unordered items and their sequence.
@@ -17,7 +17,7 @@ When talking about sort problem, we want to build a model which could sort an un
 * **Consider invariant**
   * For selection sort, we have an pointer or `iteration i` scanning entire collection of items from left to right.  To each iteration, the invariant is that the left side of pointer is sorted, which is UNCHANGEABLE, and the pointer ALWAYS point to the smallest objects among the right of pointer, which is unsorted.
 
-![Invariant example: unchangeable left side, pointer always need to point to the smallest of remain](.gitbook/assets/image%20%2819%29.png)
+![Invariant example: unchangeable left side, pointer always need to point to the smallest of remain](../.gitbook/assets/image%20%2819%29.png)
 
 Therefore, the selection sort model turns out to be:
 
@@ -78,7 +78,7 @@ cost model: comparison operation `if (less(a, b))`
 
 We can using _geometric argument_  to clearly display and calculate the order-of-growth of  selection sort:
 
-![Geometric argument example: order of growth = N^/2 + ~](.gitbook/assets/image%20%289%29.png)
+![Geometric argument example: order of growth = N^/2 + ~](../.gitbook/assets/image%20%289%29.png)
 
 {% hint style="info" %}
 Obviously, the order-of-growth will be `N^2/2 + ~`, which will take **quadratic** time. 
