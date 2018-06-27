@@ -139,7 +139,8 @@ It seems very convenient to manipulate items of stack based on Array because of 
 * **One-quarter** full array:  
   * create a new array of **half** the size and then copy items.
 
-> why shrink the stack when having one-quarter full array other than one-half full array?
+> **why shrink the stack when having one-quarter full array other than one-half full array?**  
+> To avoid thrashing, which we frequently trigger the costly operation of enlarging and shrinking when having a full stack and push - pop repeatedly.
 
 #### Code implementation
 
