@@ -221,5 +221,9 @@ public class Stack<Item> implements Iterable<Item> {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+#### Time complexity
 
+Every operation of array based Stack including iterator will take **constant** time.
+
+#### Space complexity
 
