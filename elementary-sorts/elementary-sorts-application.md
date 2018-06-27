@@ -2,7 +2,7 @@
 
 ## Shuffling
 
-![](../.gitbook/assets/image%20%2825%29.png)
+![](../.gitbook/assets/image%20%2828%29.png)
 
 Shuffling is that, given a array containing items in certain sequence, we want to rearrange the array so that result is a uniformly random permutation.
 
