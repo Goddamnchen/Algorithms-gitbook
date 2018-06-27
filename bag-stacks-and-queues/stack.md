@@ -43,10 +43,12 @@ The raw recursive LinkedList is naturally correspond to the property of stack, L
 
 We can identify that from the following picture. The raw recursive LinkedList has a pointer always pointing to the first node of entire list, which is also the most recently added or removed node of entire list. It is similar that stack pointer always point to the Top of stack.
 
-![Stack structure example: naturally correspond to raw recursive LinkedList](../.gitbook/assets/image%20%2819%29.png)
+![Stack structure example: naturally represented by raw recursive LinkedList](../.gitbook/assets/image%20%2820%29.png)
 
 #### Code implementation
 
+{% code-tabs %}
+{% code-tabs-item title="LinkedList based stack implementation" %}
 ```java
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -114,6 +116,8 @@ public class Stack<Item> implements Iterable<Item> {
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 #### Time complexity
 
@@ -131,6 +135,8 @@ To implement abstract data structure of stack, we will need:
 * push\(\): add new item at `a[N]`
 * pop\(\): remove item from `s[N-1]`;
 
+![Stack structure example: represented by array](../.gitbook/assets/image%20%2819%29.png)
+
 It seems very convenient to manipulate items of stack based on Array because of the invariant stack size `N`. However, the stack has fixed capacity in this case, which is unpractical. And we still need to do something to not only keep having sufficient stack capacity, but also using stack capacity efficiently.
 
 * Induce `resize()` to enlarge and shrink the capacity of array based stack.
@@ -143,4 +149,77 @@ It seems very convenient to manipulate items of stack based on Array because of 
 > To avoid thrashing, which we frequently trigger the costly operation of enlarging and shrinking when having a full stack and push - pop repeatedly.
 
 #### Code implementation
+
+{% code-tabs %}
+{% code-tabs-item title="Array based stack implementation" %}
+```java
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class Stack<Item> implements Iterable<Item> {
+    private Item[] a; 
+    private int n;             // size of the stack
+
+    public Stack(int capacity) {
+        a = (Item[]) new Object[capacity];
+        n = 0;
+    }
+
+    public boolean isEmpty()  { return n == 0; }
+    public int size()         { return n; }
+    
+    public void push(Item item) {
+        a[n] = item;
+        n++;
+        if (n > 0 && n == a.length) resize(2 * a.length);
+    }
+
+    public Item pop() {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        Item item = a[n - 1];             // save item to return
+        a[n - 1] = null;                  // delete item and avoid loitering
+        n--;
+        if (n > 0 && n == a.length/4) resize(a.length/2);
+        return item;                      // return the saved item
+    }
+
+    public Item peek() {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        return a[n - 1];
+    }  
+    
+    private void resize(int capacity) {
+        Item[] newArray = (Item[]) new Object[capacity];
+        System.arraycopy(a, 0, newArray, 0, n);
+        a = newArray;
+    }
+    
+    /* Returns an iterator to this stack that iterates through the items in LIFO order.*/
+    public Iterator<Item> iterator() {
+        return new ListIterator<Item>(n - 1);
+    }
+
+    // an iterator, doesn't implement remove() since it's optional
+    private class rrayIterator<Item> implements Iterator<Item> {
+        private int index;
+
+        public ListIterator(int last) { 
+            index = last; 
+        }
+        public boolean hasNext()   { return index >= 0; }
+        public void remove()       { throw new UnsupportedOperationException();}
+
+        public Item next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            Item item = a[index];
+            index--; 
+            return item;
+        }
+    }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+
 

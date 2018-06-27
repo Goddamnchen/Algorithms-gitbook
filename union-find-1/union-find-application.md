@@ -13,7 +13,7 @@ We will focus on the application of _percolation system._ Its principle is quite
 
 ## Model Design
 
-![Percolation example:  model a percolation system using an n-by-n grid of sites](../.gitbook/assets/image%20%2840%29.png)
+![Percolation example:  model a percolation system using an n-by-n grid of sites](../.gitbook/assets/image%20%2841%29.png)
 
 Given the definition of percolation, we model this system by:
 
@@ -91,7 +91,7 @@ Checking iteratively is costly, so we'd like to carry out a new implementation w
 
 A new _n-by-n_ grids with virtual sites:  Respectively, all OPENED top or bottom row sites will initially to be in the same connected component with virtual top or bottom sites.
 
-![Algorithm example: implement with virtual sites ](../.gitbook/assets/image%20%2839%29.png)
+![Algorithm example: implement with virtual sites ](../.gitbook/assets/image%20%2840%29.png)
 
 * To identify `isFull(row, col)`, only need check whether \(row, col\) is connected to top virtual site.
 * To identify `percolates()`, check whether the virtual bottom is connected to top virtual site.
