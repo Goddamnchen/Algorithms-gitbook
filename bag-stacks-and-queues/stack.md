@@ -4,11 +4,11 @@
 
 ### What is a stack?
 
-A stack is a collection that is based on _last-in-first-out_\(LIFO\) policy.
+A stack is a collection that is based on _**last-in-first-out**_**\(LIFO\)** policy.
 
-![Abstract data structure example: Stack, a collection LIFO principle](../.gitbook/assets/image%20%2814%29.png)
+![Abstract data structure example: Stack, a collection LIFO principle](../.gitbook/assets/image%20%2815%29.png)
 
-As we can see from the picture above, stack is different with bag in terms of supporting both add\(push\) and remove\(pop\) operation, iterating through all items in stack, and existing specific order of items that in & out of stack.
+As we can see from the picture above, stack is different with bag in terms of supporting both insert\(push\) and remove\(pop\) operation, iterating through all items in stack, and existing specific order of items that in & out of stack.
 
 > _last-in-first-out_\(LIFO\):  Both push and pop operations will manipulate items in/out the same side of collection.
 
@@ -43,7 +43,7 @@ The raw recursive LinkedList is naturally correspond to the property of stack, L
 
 We can identify that from the following picture. The raw recursive LinkedList has a pointer always pointing to the first node of entire list, which is also the most recently added or removed node of entire list. It is similar that stack pointer always point to the Top of stack.
 
-![Stack structure example: naturally represented by raw recursive LinkedList](../.gitbook/assets/image%20%2820%29.png)
+![Stack structure example: naturally represented by raw recursive LinkedList](../.gitbook/assets/image%20%2821%29.png)
 
 #### Code implementation
 
@@ -93,26 +93,38 @@ public class Stack<Item> implements Iterable<Item> {
     }  
 
     /* Returns an iterator to this stack that iterates through the items in LIFO order.*/
-    public Iterator<Item> iterator() {
-        return new ListIterator<Item>(first);
-    }
+    public Iterator<Item> iterator() { /* see LinkedList based stack iterator below */ }
 
     // an iterator, doesn't implement remove() since it's optional
-    private class ListIterator<Item> implements Iterator<Item> {
-        private Node<Item> current;
+    private class ListIterator<Item> implements Iterator<Item> { 
+    /* see LinkedList based stack iterator below */
+    }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-        public ListIterator(Node<Item> first) { 
-            current = first; 
-        }
-        public boolean hasNext()   { return current != null; }
-        public void remove()       { throw new UnsupportedOperationException();}
+{% code-tabs %}
+{% code-tabs-item title="LinkedList based stack iterator" %}
+```java
+public Iterator<Item> iterator() {
+    return new ListIterator<Item>(first);
+}
 
-        public Item next() {
-            if (!hasNext()) throw new NoSuchElementException();
-            Item item = current.item;
-            current = current.next; 
-            return item;
-        }
+private class ListIterator<Item> implements Iterator<Item> {
+    private Node<Item> current;
+
+    public ListIterator(Node<Item> first) { 
+        current = first; 
+    }
+    public boolean hasNext()   { return current != null; }
+    public void remove()       { throw new UnsupportedOperationException();}
+
+    public Item next() {
+        if (!hasNext()) throw new NoSuchElementException();
+        Item item = current.item;
+        current = current.next; 
+        return item;
     }
 }
 ```
@@ -136,13 +148,13 @@ Every operation of LinkedList based Stack including iterator will take **constan
 
 ### Array based
 
-To implement abstract data structure of stack, we will need:
+To implement abstract data structure of stack using array, we will need:
 
 * Array `a[]` to store `N` Items on stack
 * push\(\): add new item at `a[N]`
 * pop\(\): remove item from `s[N-1]`;
 
-![Stack structure example: represented by array](../.gitbook/assets/image%20%2819%29.png)
+![Stack structure example: represented by array](../.gitbook/assets/image%20%2820%29.png)
 
 It seems very convenient to manipulate items of stack based on Array because of the invariant stack size `N`. However, the stack has fixed capacity in this case, which is unpractical. And we still need to do something to not only keep having sufficient stack capacity, but also using stack capacity efficiently.
 
@@ -202,26 +214,37 @@ public class Stack<Item> implements Iterable<Item> {
     }
     
     /* Returns an iterator to this stack that iterates through the items in LIFO order.*/
-    public Iterator<Item> iterator() {
-        return new ListIterator<Item>(n - 1);
-    }
+    public Iterator<Item> iterator() { /* see Array based stack iterator below */ }
 
     // an iterator, doesn't implement remove() since it's optional
-    private class rrayIterator<Item> implements Iterator<Item> {
-        private int index;
+    private class ArrayIterator<Item> implements Iterator<Item> {
+    /* see Array based stack iterator below */
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-        public ListIterator(int last) { 
-            index = last; 
-        }
-        public boolean hasNext()   { return index >= 0; }
-        public void remove()       { throw new UnsupportedOperationException();}
+{% code-tabs %}
+{% code-tabs-item title="Array based stack iterator" %}
+```java
+public Iterator<Item> iterator() {
+    return new ArrayIterator<Item>(n - 1);
+}
 
-        public Item next() {
-            if (!hasNext()) throw new NoSuchElementException();
-            Item item = a[index];
-            index--; 
-            return item;
-        }
+private class ArrayIterator<Item> implements Iterator<Item> {
+    private int index;
+    
+    public ArrayIterator(int last) { 
+        index = last; 
+    }
+    public boolean hasNext()   { return index >= 0; }
+    public void remove()       { throw new UnsupportedOperationException();}
+
+    public Item next() {
+        if (!hasNext()) throw new NoSuchElementException();
+        Item item = a[index];
+        index--; 
+        return item;
     }
 }
 ```
