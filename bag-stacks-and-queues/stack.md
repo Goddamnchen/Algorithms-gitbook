@@ -123,6 +123,13 @@ public class Stack<Item> implements Iterable<Item> {
 
 Every operation of LinkedList based Stack including iterator will take **constant** time.
 
+| LinkedList based | Best | Worst | Amortized |
+| --- | --- | --- | --- | --- |
+| Construct | 1  | 1 | 1 |
+| push | 1 | 1 | 1 |
+| pop | 1 | 1 | 1 |
+| size | 1  | 1 | 1   |
+
 #### Space complexity
 
 ![Memory used example: 40bytes per stack ndoe](../.gitbook/assets/image%20%285%29.png)
@@ -223,7 +230,48 @@ public class Stack<Item> implements Iterable<Item> {
 
 #### Time complexity
 
-Every operation of array based Stack including iterator will take **constant** time.
+Operations NOT including resize of array based Stack will take **constant** time. The resize operation will take **linear** time in the worst case.
+
+{% hint style="info" %}
+However,  combining the mechanism of rationally resizing array, operations including resize, such as push/pop will cost **constant amortized** time.
+{% endhint %}
+
+| Array based | Best | Worst | Amortized |
+| --- | --- | --- | --- | --- |
+| Construct | 1  | 1 | 1 |
+| push | 1 | **N** | 1 |
+| pop | 1 | **N** | 1 |
+| size | 1  | 1 | 1   |
 
 #### Space complexity
+
+The memory used by array based stack is relevant to the stack size `N`, and directly corresponds to array size assigned by resize mechanism. According to the ratio of `stack items / array size`  , There is a memory interval used by array based stack: \(Object reference of stack node = 8 bytes\)
+
+* Full array: `8N + ～`
+* One - quarter full array: `32N + ～`
+
+### Comparison
+
+After having both LinkedList and array based implementation, we come out a question:   
+**Which one is better to use?**
+
+Linked-List implementation :
+
+* Every operation take **constant** time in worst case
+* Use extra time to deal with links and address reference
+
+Array implementation:
+
+* Every operation takes **constant amortized** time.
+* Less waste space. 
+
+As we can see, the Linked-List implementation is good for time consume of each  operation, but fails to maintain a lower cost of memory. While the Array implementation saves times and memory from manipulating address reference, but cost time proportional to size N when resizing.
+
+Therefore, the answer is conditional. When having no limitation of memory usage or caring about the performance of each single operation, using Linked-List is better choice. When caring about the efficiency of memory usage or generally maintaining a good time performance, using array is good.
+
+## Shortcut - another way out
+
+### Delegation
+
+We have developed two primary implementation using LinkedList and array to represent stack. There
 
