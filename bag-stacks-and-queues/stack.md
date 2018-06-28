@@ -273,5 +273,55 @@ Therefore, the answer is conditional. When having no limitation of memory usage 
 
 ### Delegation
 
-We have developed two primary implementation using LinkedList and array to represent stack. There
+We have developed two primary implementation using LinkedList and Array to represent stack. Both these design uses primitive elements like Node class and array structure to construct the abstract data stricture of Stack. However, we could also find another way out by using a well-developed API called _Deque,_ a collection could add/remove from both sides.
+
+It is a easier and common to way to construct our Stack API by delegating the Deque API. I write the example of Stack API delegated by ArrayDeque, maintain the same performance as primitive array implementation.
+
+{% code-tabs %}
+{% code-tabs-item title="Delegation based stack implementation" %}
+```java
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Iterator;
+
+public class Stack<Item> implements Iterable<Item> {
+    private Deque<Item> stack;
+
+    public Stack() {
+        stack = new ArrayDeque<>();
+    }
+    public void push(Item item) {
+        stack.addLast(item);
+    }
+    public Item pop() {
+        Item returnValue = stack.removeLast();
+        return returnValue;
+    }
+    public int size() {
+        return stack.size();
+    }
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+    public Iterator<Item> iterator() {
+        return stack.descendingIterator();
+    }
+    //test
+    public static void main(String[] args) {
+        Stack<Integer> intStack = new Stack<>();
+        intStack.push(1);
+        intStack.push(2);
+        intStack.push(3);
+        intStack.push(4);
+        intStack.pop();
+        for (int i : intStack) {
+            System.out.println(i);
+        }
+    }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+ 
 
