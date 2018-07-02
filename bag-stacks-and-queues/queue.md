@@ -150,6 +150,10 @@ The implementation considers:
 2. The case when dequeue to empty queue and then enqueue
 3. Different positions case of `head` and `tail` when resizing
 
+{% hint style="info" %}
+The array-based implementation does NOT support adding a item of NULL !
+{% endhint %}
+
 {% code-tabs %}
 {% code-tabs-item title="Array-based queue implementation" %}
 ```java
