@@ -14,7 +14,7 @@ We could build this model with following steps:
   * Use `index` of array to represent objects 0 to N - 1 
   * Hide details relevant to object itself \(i.e. object attributes\)
 
-![Abstract example: Using index \[1-10\] to represent ten objects](../.gitbook/assets/image%20%2857%29.png)
+![Abstract example: Using index \[1-10\] to represent ten objects](../.gitbook/assets/image%20%2858%29.png)
 
 * **Define logic connection:**
   * Connect objects by partitioning different `Set`

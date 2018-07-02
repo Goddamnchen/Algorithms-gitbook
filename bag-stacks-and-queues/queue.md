@@ -6,7 +6,7 @@
 
 A stack is a collection that is based on _**first-in-first-out**_**\(FIFO\)** policy.
 
-![Abstract data structure example: Queue, a collection FIFO principle](../.gitbook/assets/image%20%2856%29.png)
+![Abstract data structure example: Queue, a collection FIFO principle](../.gitbook/assets/image%20%2857%29.png)
 
 As we can see from the picture above, queue is different with stack in terms of manipulating both insert\(enqueue\) and remove\(dequeue\) operation on the opposite side INSTEAD OF the same side, complying with first-in-first-out.
 
@@ -37,7 +37,7 @@ Designing a algorithm of queue can also be represented by using both Array and L
 
 Due to the reason that queues need operations on the both side of collection, the raw recursive LinkedList can hardly be used efficiently. It is more convenient to use a LinkedList which maintains pointer pointing to the first and last node in LinkedList.
 
-![Queue structure example: represented by doubly  LinkedList](../.gitbook/assets/image%20%2858%29.png)
+![Queue structure example: represented by doubly  LinkedList](../.gitbook/assets/image%20%2859%29.png)
 
 We will enqueue at the end of LinkedList and dequeue from the front of LinkedList.
 
@@ -138,9 +138,9 @@ We will not only need these [_definitions_](stack.md#array-based) from array-bas
 
 ![Queue structure example: represented by array](../.gitbook/assets/image%20%2853%29.png)
 
-The implementation of  array-based Queue is a little bit complicated due to the additional `head` and `tail`  reference node. In order to resize the full or inefficient used array, we need to pay attention to the positions of both head and tail reference node, then resetting them to a proper position.
+The implementation of  array-based Queue is a little bit complicated due to the additional `head` and `tail`  reference indexes. In order to resize the full or inefficient used array, we need to pay attention to the positions of both head and tail reference indexes, then resetting them to a proper position.
 
-Maintaining the `head` reference node to the start index of array `q[0]` is very clear when resizing happens. We will see implementation details below.
+Maintaining the `head` reference index to the start index of array `q[0]` is very clear when resizing happens. We will see implementation details below.
 
 #### Code implementation
 
