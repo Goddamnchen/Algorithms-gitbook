@@ -6,7 +6,7 @@
 
 A stack is a collection that is based on _**last-in-first-out**_**\(LIFO\)** policy.
 
-![Abstract data structure example: Stack, a collection LIFO principle](../.gitbook/assets/image%20%2815%29.png)
+![Abstract data structure example: Stack, a collection LIFO principle](../.gitbook/assets/image%20%2816%29.png)
 
 As we can see from the picture above, stack is different with bag in terms of supporting both insert\(push\) and remove\(pop\) operation, iterating through all items in stack, and existing specific order of items that in & out of stack.
 
@@ -43,7 +43,7 @@ The raw recursive LinkedList is naturally correspond to the property of stack, L
 
 We can identify that from the following picture. The raw recursive LinkedList has a pointer always pointing to the first node of entire list, which is also the most recently added or removed node of entire list. It is similar that stack pointer always point to the Top of stack.
 
-![Stack structure example: naturally represented by raw recursive LinkedList](../.gitbook/assets/image%20%2821%29.png)
+![Stack structure example: naturally represented by raw recursive LinkedList](../.gitbook/assets/image%20%2822%29.png)
 
 #### Code implementation
 
@@ -104,6 +104,8 @@ public class Stack<Item> implements Iterable<Item> {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+#### Iterator implementatIon
+
 {% code-tabs %}
 {% code-tabs-item title="LinkedList based stack iterator" %}
 ```java
@@ -131,8 +133,10 @@ private class ListIterator<Item> implements Iterator<Item> {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-#### Time complexity
+#### Time&Space complexity
 
+{% tabs %}
+{% tab title="Time" %}
 Every operation of LinkedList based Stack including iterator will take **constant** time.
 
 | LinkedList based | Best | Worst | Amortized |
@@ -141,20 +145,22 @@ Every operation of LinkedList based Stack including iterator will take **constan
 | push | 1 | 1 | 1 |
 | pop | 1 | 1 | 1 |
 | size | 1  | 1 | 1   |
+{% endtab %}
 
-#### Space complexity
-
+{% tab title="Space" %}
 ![Memory used example: 40bytes per stack ndoe](../.gitbook/assets/image%20%285%29.png)
+{% endtab %}
+{% endtabs %}
 
 ### Array based
 
 To implement abstract data structure of stack using array, we will need:
 
-* Array `a[]` to store `N` Items on stack
-* push\(\): add new item at `a[N]`
+* Array `s[]` to store `N` Items on stack
+* push\(\): add new item at `s[N]`
 * pop\(\): remove item from `s[N-1]`;
 
-![Stack structure example: represented by array](../.gitbook/assets/image%20%2820%29.png)
+![Stack structure example: represented by array](../.gitbook/assets/image%20%2821%29.png)
 
 It seems very convenient to manipulate items of stack based on Array because of the invariant stack size `N`. However, the stack has fixed capacity in this case, which is unpractical. And we still need to do something to not only keep having sufficient stack capacity, but also using stack capacity efficiently.
 
@@ -176,11 +182,11 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class Stack<Item> implements Iterable<Item> {
-    private Item[] a; 
+    private Item[] s; 
     private int n;             // size of the stack
 
     public Stack(int capacity) {
-        a = (Item[]) new Object[capacity];
+        s = (Item[]) new Object[capacity];
         n = 0;
     }
 
@@ -188,29 +194,30 @@ public class Stack<Item> implements Iterable<Item> {
     public int size()         { return n; }
     
     public void push(Item item) {
-        a[n] = item;
+        if (item == null) throw new IllegalArgumentException("can not add null");
+        s[n] = item;
         n++;
-        if (n > 0 && n == a.length) resize(2 * a.length);
+        if (n > 0 && n == s.length) resize(2 * s.length);
     }
 
     public Item pop() {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        Item item = a[n - 1];             // save item to return
-        a[n - 1] = null;                  // delete item and avoid loitering
+        Item item = s[n - 1];             // save item to return
+        s[n - 1] = null;                  // delete item and avoid loitering
         n--;
-        if (n > 0 && n == a.length/4) resize(a.length/2);
+        if (n > 0 && n == s.length/4) resize(s.length/2);
         return item;                      // return the saved item
     }
 
     public Item peek() {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        return a[n - 1];
+        return s[n - 1];
     }  
     
     private void resize(int capacity) {
         Item[] newArray = (Item[]) new Object[capacity];
-        System.arraycopy(a, 0, newArray, 0, n);
-        a = newArray;
+        System.arraycopy(s, 0, newArray, 0, n);
+        s = newArray;
     }
     
     /* Returns an iterator to this stack that iterates through the items in LIFO order.*/
@@ -223,6 +230,8 @@ public class Stack<Item> implements Iterable<Item> {
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
+
+#### Iterator implementation
 
 {% code-tabs %}
 {% code-tabs-item title="Array based stack iterator" %}
@@ -251,8 +260,10 @@ private class ArrayIterator<Item> implements Iterator<Item> {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-#### Time complexity
+#### Time&Space complexity
 
+{% tabs %}
+{% tab title="Time" %}
 Operations NOT including resize of array based Stack will take **constant** time. The resize operation will take **linear** time in the worst case.
 
 {% hint style="info" %}
@@ -265,13 +276,15 @@ However,  combining the mechanism of rationally resizing array, operations inclu
 | push | 1 | **N** | 1 |
 | pop | 1 | **N** | 1 |
 | size | 1  | 1 | 1   |
+{% endtab %}
 
-#### Space complexity
-
+{% tab title="Space" %}
 The memory used by array based stack is relevant to the stack size `N`, and directly corresponds to array size assigned by resize mechanism. According to the ratio of `stack items / array size`  , There is a memory interval used by array based stack: \(Object reference of stack node = 8 bytes\)
 
 * Full array: `8N + ～`
 * One - quarter full array: `32N + ～`
+{% endtab %}
+{% endtabs %}
 
 ### Comparison
 

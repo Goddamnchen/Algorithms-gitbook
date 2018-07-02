@@ -6,7 +6,7 @@
 
 A stack is a collection that is based on _**first-in-first-out**_**\(FIFO\)** policy.
 
-![Abstract data structure example: Queue, a collection FIFO principle](../.gitbook/assets/image%20%2854%29.png)
+![Abstract data structure example: Queue, a collection FIFO principle](../.gitbook/assets/image%20%2856%29.png)
 
 As we can see from the picture above, queue is different with stack in terms of manipulating both insert\(enqueue\) and remove\(dequeue\) operation on the opposite side INSTEAD OF the same side, complying with first-in-first-out.
 
@@ -37,12 +37,14 @@ Designing a algorithm of queue can also be represented by using both Array and L
 
 Due to the reason that queues need operations on the both side of collection, the raw recursive LinkedList can hardly be used efficiently. It is more convenient to use a LinkedList which maintains pointer pointing to the first and last node in LinkedList.
 
-![Queue structure example: represented by doubly  LinkedList](../.gitbook/assets/image%20%2856%29.png)
+![Queue structure example: represented by doubly  LinkedList](../.gitbook/assets/image%20%2858%29.png)
 
 We will enqueue at the end of LinkedList and dequeue from the front of LinkedList.
 
 #### Code implementation
 
+{% code-tabs %}
+{% code-tabs-item title="LinkedList based queue implementation" %}
 ```java
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -100,25 +102,156 @@ public class Queue<Item> implements Iterable<Item> {
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-_Refer to_ [_here_](stack.md#code-implementation) _for Iterator implementation detail._
+_Refer to_ [_here_](stack.md#iterator-implementation) _for Iterator implementation detail._
 
-#### Time complexity
+#### Time&Space complexity
 
+{% tabs %}
+{% tab title="Time" %}
 Every operation of LinkedList based Queue including iterator will take **constant** time.
 
 | LinkedList based | Best | Worst | Amortized |
 | --- | --- | --- | --- | --- |
 | Construct | 1  | 1 | 1 |
 | enqueue | 1 | 1 | 1 |
-| dequeue1 | 1 | 1 |  |
+| dequeue | 1 | 1 | 1 |
 | size | 1  | 1 | 1   |
+{% endtab %}
 
-#### Space complexity
-
-Using same 40 bytes per node and additional 8 bytes for last node reference in total.
+{% tab title="Space" %}
+Using same 40 bytes per node and additional 8 bytes for reference of tail node in total.
+{% endtab %}
+{% endtabs %}
 
 ### Array based
 
+We will not only need these [_definitions_](stack.md#array-based) from array-based stack but also complement it to implement the queue data structure and manipulate items from both side.
 
+* Still, use array `q[]` to store `N` items in queue
+* enqueue\(\): add new item at `q[tail]`.
+* dequeue\(\): remove item from `q[head]`.
+* Update head and tail modulo the capacity.
+* Add resizing array.
+
+![Queue structure example: represented by array](../.gitbook/assets/image%20%2853%29.png)
+
+The implementation of  array-based Queue is a little bit complicated due to the additional `head` and `tail`  reference node. In order to resize the full or inefficient used array, we need to pay attention to the positions of both head and tail reference node, then resetting them to a proper position.
+
+Maintaining the `head` reference node to the start index of array `q[0]` is very clear when resizing happens. We will see implementation details below.
+
+#### Code implementation
+
+{% code-tabs %}
+{% code-tabs-item title="Array-based queue implementation" %}
+```java
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class Queue<Item> implements Iterable<Item> {
+    private Item[] s; 
+    private int n;             // size of the queue
+    private head, tail;        
+
+    public Queue(int capacity) {
+        s = (Item[]) new Object[capacity];
+        n = 0;
+        head = 0;
+        tail = 0;
+    }
+
+    public boolean isEmpty()  { return n == 0; }
+    public int size()         { return n; }
+    
+    public void enqueue(Item item) {
+        if (item == null) throw new IllegalArgumentException("can not add null");
+        if (n > 0 && n == s.length) resize(2 * s.length);
+        if (n != 0) tail = toIndex(tail + 1);
+        s[tail] = item;
+        n++;
+    }
+
+    public Item dequeue() {
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
+        if (n > 0 && n == s.length/4) resize(s.length/2);
+        Item item = s[head];             // save item to return
+        s[head] = null;                  // delete item and avoid loitering
+        n--;
+        if (n != 0) head = toIndex(head + 1);
+        return item;                      // return the saved item
+    }
+
+    public Item peek() {
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
+        return s[head];
+    }  
+    
+    private void resize(int capacity) {
+        newArray = (Item[]) new Object[capacity];
+        if (tail < head) {
+            System.arraycopy(s, head, newArray, 0, s.length - head);
+            System.arraycopy(s, 0, newArray, s.length - head, tail + 1 );
+        } else {
+            System.arraycopy(s, head, newArray, 0, tail - head + 1);
+        }
+        s = = newArray;
+        head = 0;
+        tail = n - 1;
+    }
+    
+    private int toIndex(int index){
+        int newIndex;
+        if (index < 0) {
+            newIndex = s.length - 1;
+        } else if (index >= s.length) {
+            newIndex = 0;
+        } else {
+            newIndex = index;
+        }
+        return newIndex;
+    }
+    
+    /* Returns an iterator to this stack that iterates through the items in FIFO order.*/
+    public Iterator<Item> iterator() { /* see array-based queue iterator below */ }
+
+    // an iterator, doesn't implement remove() since it's optional
+    private class ArrayIterator<Item> implements Iterator<Item> {
+    /* see array-based queue iterator below */
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+#### Iterator implementation
+
+{% code-tabs %}
+{% code-tabs-item title="Array-based queue iterator" %}
+```java
+public Iterator<Item> iterator() {
+    return new ArrayIterator<Item>(head);
+}
+
+private class ArrayIterator<Item> implements Iterator<Item> {
+    private int p;
+    private int count = 0;
+    
+    public ArrayIterator(int first) { 
+        p = first; 
+    }
+    public boolean hasNext()   { return count < n; }
+    public void remove()       { throw new UnsupportedOperationException();}
+
+    public Item next() {
+        if (!hasNext()) throw new NoSuchElementException();
+        Item item = a[p];
+        p = toIndex(p + 1);
+        count += 1;
+        return item;
+    }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
