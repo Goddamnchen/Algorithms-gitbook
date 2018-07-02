@@ -272,7 +272,7 @@ However,  combining the mechanism of rationally resizing array, operations inclu
 
 | Array based | Best | Worst | Amortized |
 | --- | --- | --- | --- | --- |
-| Construct | 1  | 1 | 1 |
+| construct | 1  | 1 | 1 |
 | push | 1 | **N** | 1 |
 | pop | 1 | **N** | 1 |
 | size | 1  | 1 | 1   |

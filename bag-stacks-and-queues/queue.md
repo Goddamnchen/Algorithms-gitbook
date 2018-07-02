@@ -115,7 +115,7 @@ Every operation of LinkedList based Queue including iterator will take **constan
 
 | LinkedList based | Best | Worst | Amortized |
 | --- | --- | --- | --- | --- |
-| Construct | 1  | 1 | 1 |
+| construct | 1  | 1 | 1 |
 | enqueue | 1 | 1 | 1 |
 | dequeue | 1 | 1 | 1 |
 | size | 1  | 1 | 1   |
@@ -143,6 +143,12 @@ The implementation of  array-based Queue is a little bit complicated due to the 
 Maintaining the `head` reference node to the start index of array `q[0]` is very clear when resizing happens. We will see implementation details below.
 
 #### Code implementation
+
+The implementation considers:
+
+1. Maintaining correct index movement and index position of array
+2. The case when dequeue to empty queue and then enqueue
+3. Different positions case of `head` and `tail` when resizing
 
 {% code-tabs %}
 {% code-tabs-item title="Array-based queue implementation" %}
@@ -187,7 +193,7 @@ public class Queue<Item> implements Iterable<Item> {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         return s[head];
     }  
-    
+
     private void resize(int capacity) {
         newArray = (Item[]) new Object[capacity];
         if (tail < head) {
@@ -200,7 +206,7 @@ public class Queue<Item> implements Iterable<Item> {
         head = 0;
         tail = n - 1;
     }
-    
+   
     private int toIndex(int index){
         int newIndex;
         if (index < 0) {
@@ -213,10 +219,9 @@ public class Queue<Item> implements Iterable<Item> {
         return newIndex;
     }
     
-    /* Returns an iterator to this stack that iterates through the items in FIFO order.*/
+    /* Returns an iterator to this queue that iterates through the items in FIFO order.*/
     public Iterator<Item> iterator() { /* see array-based queue iterator below */ }
 
-    // an iterator, doesn't implement remove() since it's optional
     private class ArrayIterator<Item> implements Iterator<Item> {
     /* see array-based queue iterator below */
 }
@@ -254,4 +259,67 @@ private class ArrayIterator<Item> implements Iterator<Item> {
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
+
+#### Time&Space complexity
+
+{% tabs %}
+{% tab title="Time" %}
+| Array-based | Best | Worst | Amortized |
+| --- | --- | --- | --- | --- |
+| construct | 1  | 1 | 1 |
+| enqueue | 1 | **N** | 1 |
+| dequeue | 1 | **N** | 1 |
+| size | 1  | 1 | 1   |
+{% endtab %}
+
+{% tab title="Space" %}
+* Full array: `8N + ～`
+* One - quarter full array: `32N + ～`
+{% endtab %}
+{% endtabs %}
+
+### Delegation
+
+It is a little complicated to directly code a queue using primitive array. Therefore, using delegation of Deque API could achieve  a implementation of queue easier.
+
+{% code-tabs %}
+{% code-tabs-item title="Delegation based queue implementation" %}
+```java
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class Stack<Item> implements Iterable<Item> {
+    private Deque<Item> queue;
+
+    public Stack() {
+        queue = new ArrayDeque<>();
+    }
+    public void enqueue(Item item) {
+        if (item == null) throw new IllegalArgumentException("can not add null");
+        queue.addLast(item);
+    }
+    public Item dequeue() {
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
+        Item returnValue = queue.removeLast();
+        return returnValue;
+    }
+    public int size() {
+        return queue.size();
+    }
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+    public Iterator<Item> iterator() {
+        return queue.Iterator();
+    }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+## Experiment
+
+{% page-ref page="queue-application.md" %}
 

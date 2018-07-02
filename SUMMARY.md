@@ -5,6 +5,7 @@
   * [Bag](bag-stacks-and-queues/bag.md)
   * [Stack](bag-stacks-and-queues/stack.md)
   * [Queue](bag-stacks-and-queues/queue.md)
+  * [Queue Application](bag-stacks-and-queues/queue-application.md)
 * [Elementary Sorts](elementary-sorts/README.md)
   * [Selection Sort](elementary-sorts/selection-sort.md)
   * [Insertion Sort](elementary-sorts/insertion-sort.md)
