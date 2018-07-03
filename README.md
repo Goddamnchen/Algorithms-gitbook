@@ -8,6 +8,8 @@
 
 {% page-ref page="bag-stacks-and-queues/queue.md" %}
 
+{% page-ref page="bag-stacks-and-queues/queue-application.md" %}
+
 ## [Elementary Sort](elementary-sorts/)
 
 {% page-ref page="elementary-sorts/selection-sort.md" %}

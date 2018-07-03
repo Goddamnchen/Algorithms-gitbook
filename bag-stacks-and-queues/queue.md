@@ -4,7 +4,7 @@
 
 ### What is a queue?
 
-A stack is a collection that is based on _**first-in-first-out**_**\(FIFO\)** policy.
+A stack is a collection that is based on **first-in-first-out\(FIFO\)** policy.
 
 ![Abstract data structure example: Queue, a collection FIFO principle](../.gitbook/assets/image%20%2857%29.png)
 
@@ -151,7 +151,7 @@ The implementation considers:
 3. Different positions case of `head` and `tail` when resizing
 
 {% hint style="info" %}
-The array-based implementation does NOT support adding a item of NULL !
+The array-based implementation does NOT support adding a item of **NULL** !
 {% endhint %}
 
 {% code-tabs %}
@@ -161,12 +161,12 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class Queue<Item> implements Iterable<Item> {
-    private Item[] s; 
+    private Item[] q; 
     private int n;             // size of the queue
     private head, tail;        
 
     public Queue(int capacity) {
-        s = (Item[]) new Object[capacity];
+        q = (Item[]) new Object[capacity];
         n = 0;
         head = 0;
         tail = 0;
@@ -177,17 +177,17 @@ public class Queue<Item> implements Iterable<Item> {
     
     public void enqueue(Item item) {
         if (item == null) throw new IllegalArgumentException("can not add null");
-        if (n > 0 && n == s.length) resize(2 * s.length);
+        if (n > 0 && n == q.length) resize(2 * q.length);
         if (n != 0) tail = toIndex(tail + 1);
-        s[tail] = item;
+        q[tail] = item;
         n++;
     }
 
     public Item dequeue() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        if (n > 0 && n == s.length/4) resize(s.length/2);
-        Item item = s[head];             // save item to return
-        s[head] = null;                  // delete item and avoid loitering
+        if (n > 0 && n == q.length / 4) resize(q.length / 2);
+        Item item = q[head];             // save item to return
+        q[head] = null;                  // delete item and avoid loitering
         n--;
         if (n != 0) head = toIndex(head + 1);
         return item;                      // return the saved item
@@ -195,18 +195,18 @@ public class Queue<Item> implements Iterable<Item> {
 
     public Item peek() {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        return s[head];
+        return q[head];
     }  
 
     private void resize(int capacity) {
         newArray = (Item[]) new Object[capacity];
         if (tail < head) {
-            System.arraycopy(s, head, newArray, 0, s.length - head);
-            System.arraycopy(s, 0, newArray, s.length - head, tail + 1 );
+            System.arraycopy(q, head, newArray, 0, q.length - head);
+            System.arraycopy(q, 0, newArray, q.length - head, tail + 1 );
         } else {
-            System.arraycopy(s, head, newArray, 0, tail - head + 1);
+            System.arraycopy(q, head, newArray, 0, tail - head + 1);
         }
-        s = = newArray;
+        q = newArray;
         head = 0;
         tail = n - 1;
     }
@@ -214,8 +214,8 @@ public class Queue<Item> implements Iterable<Item> {
     private int toIndex(int index){
         int newIndex;
         if (index < 0) {
-            newIndex = s.length - 1;
-        } else if (index >= s.length) {
+            newIndex = q.length - 1;
+        } else if (index >= q.length) {
             newIndex = 0;
         } else {
             newIndex = index;
@@ -254,7 +254,7 @@ private class ArrayIterator<Item> implements Iterator<Item> {
 
     public Item next() {
         if (!hasNext()) throw new NoSuchElementException();
-        Item item = a[p];
+        Item item = q[p];
         p = toIndex(p + 1);
         count += 1;
         return item;

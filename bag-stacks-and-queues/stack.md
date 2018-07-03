@@ -4,7 +4,7 @@
 
 ### What is a stack?
 
-A stack is a collection that is based on _**last-in-first-out**_**\(LIFO\)** policy.
+A stack is a collection that is based on __**last-in-first-out\(LIFO\)** policy.
 
 ![Abstract data structure example: Stack, a collection LIFO principle](../.gitbook/assets/image%20%2816%29.png)
 
