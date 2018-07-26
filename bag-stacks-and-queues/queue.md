@@ -4,7 +4,7 @@
 
 ### What is a queue?
 
-A stack is a collection that is based on **first-in-first-out\(FIFO\)** policy.
+A stack is a collection that is based on **First-In-First-Out\(FIFO\)** policy.
 
 ![Abstract data structure example: Queue, a collection FIFO principle](../.gitbook/assets/image%20%2857%29.png)
 
@@ -111,7 +111,7 @@ _Refer to_ [_here_](stack.md#iterator-implementation) _for Iterator implementati
 
 {% tabs %}
 {% tab title="Time" %}
-Every operation of LinkedList based Queue including iterator will take **constant** time.
+Every operation of LinkedList based Queue including iterator will take $$constant$$ time.
 
 | LinkedList based | Best | Worst | Amortized |
 | --- | --- | --- | --- | --- |

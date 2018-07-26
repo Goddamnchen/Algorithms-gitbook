@@ -67,7 +67,7 @@ Because `open(row, col)` would be more sophisticated due to connectivity constru
 1. Judging whether \(row, col\) is an open site
 2. Set \(row, col\) to be opened if possible
 3. To build a new connectivity, union \(row, col\) with its adjacent if opened 
-4. \*Keep maintaining the newly merged connectivity from several unions.
+4. \* Keep maintaining the newly merged connectivity from several unions.
 {% endtab %}
 {% endtabs %}
 
@@ -99,7 +99,7 @@ A new _n-by-n_ grids with virtual sites:  Respectively, all OPENED top or bottom
 At first glance, this is a big improvement relative to check iteratively, only taking logarithm time for both methods.
 
 {% hint style="danger" %}
-However, there will be a subtle bug in `isFull(row, col)`, which is called _**backwash**_.
+However, there will be a subtle bug in `isFull(row, col)`, which is called _****_[_**Backwash**_](union-find-application.md#backwash).
 {% endhint %}
 
 #### Backwash

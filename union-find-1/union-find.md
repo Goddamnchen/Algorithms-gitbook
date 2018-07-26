@@ -90,7 +90,7 @@ cost model: number of array accesses
 | Quick-Find | $$N$$ | $$N$$ | $$1$$ |
 
 {% hint style="warning" %}
-Union for the Quick-Find is too expensive, taking **quadratic** time to process a sequence of N union commands on N objects.
+Union for the Quick-Find is too expensive, taking $$quadratic$$ time to process a sequence of N union commands on N objects.
 
 How can we change our set representation so that combining two sets into their union only requires changing **one** value?
 {% endhint %}
@@ -165,7 +165,7 @@ cost model: number of array accesses
 
 {% hint style="warning" %}
 The quick-union algorithm seems carrying out a tree data structure which is faster than the implementation of quick-find because it does not need to go through the entire array for each input pair.  
-Unfortunately, depending on the input size and height of trees, the `Find` operation could take time ranging from **constant** to **linear**, which can NOT enable us to guarantee it to be faster in every case.
+Unfortunately, depending on the input size and height of trees, the `Find` operation could take time ranging from $$constant$$ ****to $$linear$$, which can NOT enable us to guarantee it to be faster in every case.
 {% endhint %}
 
 ## Improvements 
@@ -218,7 +218,7 @@ cost model: number of array accesses
 | Quick-Union | $$N$$ | $$N$$ | $$N$$ |
 | Weighed Quick-Union | $$N$$ | $$logN$$ | \*\*\*\*$$logN$$\*\*\*\* |
 
-In this case, the path to find the root of object in any components, which is also called `Depth`,  is at most $$lgN$$ rather than $$N$$  
+In this case, the path to find the root of object in any components, which is also called `Depth`,  is at most $$logN$$ rather than $$N$$  
 why?     
 
 * The `Depth`increases by 1 only when tree $$T1$$ __containing an object __$$x$$ __is merged into another LARGER tree $$T2$$_._

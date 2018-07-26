@@ -64,7 +64,7 @@ The insertion sort is more efficient than selection because it does NOT need to 
 * Average case?  $$\theta (n^2)$$ 
 
 {% hint style="info" %}
-The key is that the numbers [_inversions_](https://en.wikipedia.org/wiki/Inversion_%28discrete_mathematics%29) determine the amount of works and runtime of insertion sort.\( i.e. n inversions need n swap operations\). For partially sorted array, insertion sort runs in **linear** time.
+The key is that the numbers [_inversions_](https://en.wikipedia.org/wiki/Inversion_%28discrete_mathematics%29) determine the amount of works and runtime of insertion sort.\( i.e. n inversions need n swap operations\). For partially sorted array, insertion sort runs in $$linear$$ time.
 {% endhint %}
 
 Reference: [Why is insertion sort $$\theta(n^2)$$ in average case?](https://stackoverflow.com/questions/17055341/why-is-insertion-sort-%CE%98n2-in-the-average-case)
@@ -73,7 +73,7 @@ Reference: [Why is insertion sort $$\theta(n^2)$$ in average case?](https://stac
 
 However, there exists situations of which insertion sort is inefficient. This is because elements only move one position at the time even when we're kind of know that they have a long way to go, especially happening when a pair of inversions are far from each other.
 
-To improve this, we introduce _shell sort**.**_
+To improve this, we introduce [_Shell Sort_](insertion-sort.md#shell-sort)_**.**_
 
 ### Shell sort
 
@@ -120,7 +120,7 @@ public class ShellSort {
 
 #### Asymptotic Analysis
 
-The analysis of shell sort is still open and undefined  completely. For now we only know the worst-case number of compares used by shellsort with the $$3x+1$$ increments is $$O(N^{3 \over 2})$$, which is **sub-quadratic**.
+The analysis of shell sort is still open and undefined  completely. For now we only know the worst-case number of compares used by shellsort with the $$3x+1$$ increments is $$O(N^{3 \over 2})$$, which is $$sub-quadratic$$.
 
 However,  we do know shellsort is a example of a simple idea leading to substantial performance gains. It is very practical especially in applications of small system. Because:
 

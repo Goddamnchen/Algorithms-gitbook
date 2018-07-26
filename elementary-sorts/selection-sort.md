@@ -78,9 +78,9 @@ cost model: comparison operation `if (less(a, b))`
 
 We can using _geometric argument_  to clearly display and calculate the order-of-growth of  selection sort:
 
-![Geometric argument example: order of growth = N^/2 + ~](../.gitbook/assets/image%20%2814%29.png)
+![Geometric argument example: order of growth =N^2/2 + ~](../.gitbook/assets/image%20%2814%29.png)
 
-Obviously, the order-of-growth will be, $$\frac {N^2} {2} + ～$$ which will take **quadratic** time. 
+Obviously, the order-of-growth will be, $$\frac {N^2} {2} + ～$$ which will take $$quadratic$$ time. 
 
 ## Defect
 

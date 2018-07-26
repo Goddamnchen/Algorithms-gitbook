@@ -4,13 +4,13 @@
 
 ### What is a stack?
 
-A stack is a collection that is based on __**last-in-first-out\(LIFO\)** policy.
+A stack is a collection that is based on __**Last-In-First-Out\(LIFO\)**  policy.
 
 ![Abstract data structure example: Stack, a collection LIFO principle](../.gitbook/assets/image%20%2816%29.png)
 
 As we can see from the picture above, stack is different with bag in terms of supporting both insert\(push\) and remove\(pop\) operation, iterating through all items in stack, and existing specific order of items that in & out of stack.
 
-> _last-in-first-out_\(LIFO\):  Both push and pop operations will manipulate items in/out the same side of collection.
+> Last-In-First-Out\(LIFO\):  Both push and pop operations will manipulate items in/out the same side of collection.
 
 {% hint style="info" %}
 As to clients, the order of iterating through stack matters and should be the **reverse** of order where items were added, presenting from Stack Top --&gt; Stack Bottom.
@@ -137,7 +137,7 @@ private class ListIterator<Item> implements Iterator<Item> {
 
 {% tabs %}
 {% tab title="Time" %}
-Every operation of LinkedList based Stack including iterator will take **constant** time.
+Every operation of LinkedList based Stack including iterator will take $$constant$$ time.
 
 | LinkedList based | Best | Worst | Amortized |
 | --- | --- | --- | --- | --- |
@@ -264,10 +264,10 @@ private class ArrayIterator<Item> implements Iterator<Item> {
 
 {% tabs %}
 {% tab title="Time" %}
-Operations NOT including resize of array based Stack will take **constant** time. The resize operation will take **linear** time in the worst case.
+Operations NOT including resize of array based Stack will take $$constant$$ time. The resize operation will take $$linear$$ time in the worst case.
 
 {% hint style="info" %}
-However,  combining the mechanism of rationally resizing array, operations including resize, such as push/pop will cost **constant amortized** time.
+However,  combining the mechanism of rationally resizing array, operations including resize, such as push/pop will cost $$constant\ amortized$$ time.
 {% endhint %}
 
 | Array based | Best | Worst | Amortized |
@@ -279,7 +279,7 @@ However,  combining the mechanism of rationally resizing array, operations inclu
 {% endtab %}
 
 {% tab title="Space" %}
-The memory used by array based stack is relevant to the stack size `N`, and directly corresponds to array size assigned by resize mechanism. According to the ratio of `stack items / array size`  , There is a memory interval used by array based stack: \(Object reference of stack node = 8 bytes\)
+The memory used by array based stack is relevant to the stack size `N`, and directly corresponds to array size assigned by resize mechanism. According to the ratio of $$stack\  items \over array\ size$$ , There is a memory interval used by array based stack: \(Object reference of stack node = 8 bytes\)
 
 * Full array:   $$8N + ～$$
 * One - quarter full array:   $$32N + ～$$ 
@@ -293,12 +293,12 @@ After having both LinkedList and array based implementation, we come out a quest
 
 Linked-List implementation :
 
-* Every operation take **constant** time in worst case
+* Every operation take $$constant$$ time in worst case
 * Use extra time to deal with links and address reference
 
 Array implementation:
 
-* Every operation takes **constant amortized** time.
+* Every operation takes $$constant\ amortized$$ time.
 * Less waste space. 
 
 As we can see, the Linked-List implementation is good for time consume of each  operation, but fails to maintain a lower cost of memory. While the Array implementation saves times and memory from manipulating address reference, but cost time proportional to size N when resizing.

@@ -17,7 +17,7 @@ The idea of Knuth Shuffle is to Iterate through whole array and :
 * In `iteration i`, pick integer `r` between `0` and `i` uniformly at random.
 * Swap `a[i]` and `a[r]`.
 
-After iterating through whole array, the Knuth shuffling algorithm produces a uniformly random permutation of the input array in **linear** time.
+After iterating through whole array, the Knuth shuffling algorithm produces a uniformly random permutation of the input array in $$linear$$ ****time.
 
 {% hint style="warning" %}
 There is a common pitfall that programmer tends to pick a random integer belonged to `[0, N - 1]` and swap for each iteration i. This can not give a uniformly random result.
