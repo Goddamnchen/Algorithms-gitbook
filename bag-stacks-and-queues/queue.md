@@ -115,10 +115,10 @@ Every operation of LinkedList based Queue including iterator will take **constan
 
 | LinkedList based | Best | Worst | Amortized |
 | --- | --- | --- | --- | --- |
-| construct | 1  | 1 | 1 |
-| enqueue | 1 | 1 | 1 |
-| dequeue | 1 | 1 | 1 |
-| size | 1  | 1 | 1   |
+| construct | $$1$$  | $$1$$ | $$1$$ |
+| enqueue | $$1$$ | $$1$$ | $$1$$ |
+| dequeue | $$1$$ | $$1$$ | $$1$$ |
+| size | $$1$$  | $$1$$ | $$1$$   |
 {% endtab %}
 
 {% tab title="Space" %}
@@ -270,15 +270,15 @@ private class ArrayIterator<Item> implements Iterator<Item> {
 {% tab title="Time" %}
 | Array-based | Best | Worst | Amortized |
 | --- | --- | --- | --- | --- |
-| construct | 1  | 1 | 1 |
-| enqueue | 1 | **N** | 1 |
-| dequeue | 1 | **N** | 1 |
-| size | 1  | 1 | 1   |
+| construct | $$1$$  | $$1$$ | $$1$$ |
+| enqueue | $$1$$ | \*\*\*\*$$N$$\*\*\*\* | $$1$$ |
+| dequeue | $$1$$ | \*\*\*\*$$N$$\*\*\*\* | $$1$$ |
+| size | $$1$$  | $$1$$ | $$1$$   |
 {% endtab %}
 
 {% tab title="Space" %}
-* Full array: `8N + ～`
-* One - quarter full array: `32N + ～`
+* Full array:   $$8N + ～ $$
+* One - quarter full array:   $$32N + ～$$ 
 {% endtab %}
 {% endtabs %}
 

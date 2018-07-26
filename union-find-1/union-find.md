@@ -30,7 +30,7 @@ Now, if we want to connect  `object[2]` and `object[5]`, all objects will connec
 Then, the model of dynamic connectivity problem turns out to be summarized as steps or operations to implement :  
 
 1. Given a set of N objects
-2. Input a pair of `(p, q) ∈ N`
+2. Input a pair of $$(p,q)∈ N$$ 
    * `Find`: check if two objects are in the same set
    * `Union`: replace components containing two objects with their union
 3. Iterate to previous step 
@@ -87,7 +87,7 @@ cost model: number of array accesses
 
 | Algorithms | Initialize | Union | Find |
 | --- | --- |
-| Quick-Find | N | N | 1 |
+| Quick-Find | $$N$$ | $$N$$ | $$1$$ |
 
 {% hint style="warning" %}
 Union for the Quick-Find is too expensive, taking **quadratic** time to process a sequence of N union commands on N objects.
@@ -160,8 +160,8 @@ cost model: number of array accesses
 
 | Algorithms | Initialize | Union | Find |
 | --- | --- | --- |
-| Quick-Find | N | N | 1 |
-| Quick-Union | N | **N** | **N** |
+| Quick-Find | $$N$$ | $$N$$ | $$1$$ |
+| Quick-Union | $$N$$ | \*\*\*\*$$N$$\*\*\*\* | \*\*\*\*$$N$$\*\*\*\* |
 
 {% hint style="warning" %}
 The quick-union algorithm seems carrying out a tree data structure which is faster than the implementation of quick-find because it does not need to go through the entire array for each input pair.  
@@ -214,22 +214,22 @@ cost model: number of array accesses
 
 | Algorithms | Initialize | Union | Find |
 | --- | --- | --- | --- |
-| Quick-Find | N | N | 1 |
-| Quick-Union | N | N | N |
-| Weighed Quick-Union | N | **logN** | **logN** |
+| Quick-Find | $$N$$ | $$N$$ | $$1$$ |
+| Quick-Union | $$N$$ | $$N$$ | $$N$$ |
+| Weighed Quick-Union | $$N$$ | $$logN$$ | \*\*\*\*$$logN$$\*\*\*\* |
 
-In this case, the path to find the root of object in any components, which is also called `Depth`,  is at most `lgN`rather than `N`  
+In this case, the path to find the root of object in any components, which is also called `Depth`,  is at most $$lgN$$ rather than $$N$$  
 why?     
 
-* The `Depth`increases by 1 only when tree _T1_ containing an object _x_ is merged into another LARGER tree _T2._
-* The size of merged new tree `T2 ≥ 2 * T1`.
-* So the **LARGEST** tree size `N`at most comes from `logN`times of double of the **SMALLEST** single tree.
+* The `Depth`increases by 1 only when tree $$T1$$ __containing an object __$$x$$ __is merged into another LARGER tree $$T2$$_._
+* The size of merged new tree $$T2≥2*T1$$.
+* So the **LARGEST** tree size $$N$$ at most comes from $$logN$$ times of double of the **SMALLEST** single tree.
 
 ![Depth illustration example: smaller tree T1 connect to larger tree T2](../.gitbook/assets/image%20%2820%29.png)
 
 {% hint style="success" %}
-Finally, the weighted quick-union is efficient and could totally take `N + M*logN` linear time in worst case.  
-\*_M_ is the executed times of `Find` operations.
+Finally, the weighted quick-union is efficient and could totally take $$N+M*logN$$ linear time in worst case.  
+\*$$M$$ is the executed times of `Find` operations.
 {% endhint %}
 
 

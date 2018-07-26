@@ -20,9 +20,9 @@ To avoid exerting redundant comparing operation when already having parts of ord
 Therefore, the insertion sort model turns out to be:
 
 1. Strat from `Iteration i`
-2. Compare current `array[i]` with it's left `array[i-1], i > 0 ;`
-   * if `array[i - 1] <= array[i]`, iterate to `i + 1;`
-   * else if `array[i - 1] > array[i], swap(a[i], a[i-1])`, then iterate to `i - 1;`
+2. Compare current `array[i]` with it's left `array[i-1]`, `i > 0` ;
+   * if `array[i - 1] <= array[i]`, iterate to `i + 1`;
+   * else if `array[i - 1] > array[i]`, `swap(a[i], a[i-1])`, then iterate to `i - 1`;
 3. Go to step 2
 
 ## Algorithm Analysis
@@ -56,18 +56,18 @@ cost model: swap operation `swap (a, j, j - 1)`
 
 The insertion sort is more efficient than selection because it does NOT need to iterate through all the remaining items during each iteration. The runtime of insertion sort is a little complicate to calculate because it actually  depends on the order of original input array. 
 
-* Best case : `Θ(n)` ,when having 0 inversions and thus already ordered
-* Worst case: `Θ(n^2)`,  when having `n(n - 1)/2` inversions and in descending order.
+* Best case : $$\theta(n)$$,when having 0 inversions and thus already ordered
+* Worst case: $$\theta (n^2)$$,  when having $$n(n-1) \over 2$$ inversions and in descending order.
 
-> Given this, we can accurately express the runtime of insertion sort as `Θ(n + I)`, where `I` is the number of inversions of the original array. This matches our original runtime bounds - in a sorted array, there are 0 inversions, and the runtime is `Θ(n + 0) = Θ(n),` and in a reverse-sorted array, there are `n(n - 1)/2` inversions, and the runtime is `Θ(n + n(n-1)/2) = Θ(n^2)`.
+> Given this, we can accurately express the runtime of insertion sort as $$\theta(n+I)$$ , where $$I$$ is the number of inversions of the original array. This matches our original runtime bounds - in a sorted array, there are 0 inversions, and the runtime is $$\theta(n+0) = \theta(n)$$, and in a reverse-sorted array, there are $$n(n-1)\over2$$ inversions, and the runtime is $$\theta(n+{n(n-1)\over2}) = \theta(n^2)$$.
 
-* Average case? `Θ(n^2)`
+* Average case?  $$\theta (n^2)$$ 
 
 {% hint style="info" %}
 The key is that the numbers [_inversions_](https://en.wikipedia.org/wiki/Inversion_%28discrete_mathematics%29) determine the amount of works and runtime of insertion sort.\( i.e. n inversions need n swap operations\). For partially sorted array, insertion sort runs in **linear** time.
 {% endhint %}
 
-Reference: [Why is insertion sort Θ\(n^2\) in average case?](https://stackoverflow.com/questions/17055341/why-is-insertion-sort-%CE%98n2-in-the-average-case)
+Reference: [Why is insertion sort $$\theta(n^2)$$ in average case?](https://stackoverflow.com/questions/17055341/why-is-insertion-sort-%CE%98n2-in-the-average-case)
 
 ## Improvement
 
@@ -120,7 +120,7 @@ public class ShellSort {
 
 #### Asymptotic Analysis
 
-The analysis of shell sort is still open and undefined  completely. For now we only know the worst-case number of compares used by shellsort with the `3x + 1` increments is **`O(N^3/2)`**, which is **sub-quadratic**.
+The analysis of shell sort is still open and undefined  completely. For now we only know the worst-case number of compares used by shellsort with the $$3x+1$$ increments is $$O(N^{3 \over 2})$$, which is **sub-quadratic**.
 
 However,  we do know shellsort is a example of a simple idea leading to substantial performance gains. It is very practical especially in applications of small system. Because:
 

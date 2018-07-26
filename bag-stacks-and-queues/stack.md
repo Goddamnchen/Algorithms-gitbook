@@ -141,10 +141,10 @@ Every operation of LinkedList based Stack including iterator will take **constan
 
 | LinkedList based | Best | Worst | Amortized |
 | --- | --- | --- | --- | --- |
-| Construct | 1  | 1 | 1 |
-| push | 1 | 1 | 1 |
-| pop | 1 | 1 | 1 |
-| size | 1  | 1 | 1   |
+| Construct | $$1$$  | $$1$$ | $$1$$ |
+| push | $$1$$ | $$1$$ | $$1$$ |
+| pop | $$1$$ | $$1$$ | $$1$$ |
+| size | $$1$$  | $$1$$ | $$1$$   |
 {% endtab %}
 
 {% tab title="Space" %}
@@ -272,17 +272,17 @@ However,  combining the mechanism of rationally resizing array, operations inclu
 
 | Array based | Best | Worst | Amortized |
 | --- | --- | --- | --- | --- |
-| construct | 1  | 1 | 1 |
-| push | 1 | **N** | 1 |
-| pop | 1 | **N** | 1 |
-| size | 1  | 1 | 1   |
+| construct | $$1$$ | $$1$$ | $$1$$ |
+| push | $$1$$  | $$N$$  | $$1$$ |
+| pop | $$ 1$$ | $$N$$ | $$1$$ |
+| size | $$1 $$ | $$1$$ | $$1$$ |
 {% endtab %}
 
 {% tab title="Space" %}
 The memory used by array based stack is relevant to the stack size `N`, and directly corresponds to array size assigned by resize mechanism. According to the ratio of `stack items / array size`  , There is a memory interval used by array based stack: \(Object reference of stack node = 8 bytes\)
 
-* Full array: `8N + ～`
-* One - quarter full array: `32N + ～`
+* Full array:   $$8N + ～$$
+* One - quarter full array:   $$32N + ～$$ 
 {% endtab %}
 {% endtabs %}
 

@@ -82,7 +82,7 @@ In which case, we acquire 3  different implementations of identifying successful
 * To identify `percolated()`, iteratively check connectivity of sites on the BOTTOM with each possibly opened site on the TOP.
 
 {% hint style="warning" %}
-Undoubtedly this assumed implementation is not efficient. For n-by-n grids the percolates\(\) may take `n^2logn` in the worst case.
+Undoubtedly this assumed implementation is not efficient. For n-by-n grids the percolates\(\) may take $$N^2logn$$ in the worst case.
 {% endhint %}
 
 ### Virtual sites
@@ -174,7 +174,7 @@ For now, this subtle bug has been solved by subtle changes.
 
 {% hint style="warning" %}
 But don't you think it is sort of wasting memory? Both WeightedQuickUnionUf are doing the SAME thing at most time. All we want to do is simply keep tracking connectivity to the TOP of different connected components.  
-Sure enough, my the implementation so far failed to pass the bonus test of memory use, which is expected to be `11n^2`. So there must be a better way.
+Sure enough, my the implementation so far failed to pass the bonus test of memory use, which is expected to be $$11N^2$$. So there must be a better way.
 {% endhint %}
 
 ## Improvement
@@ -194,16 +194,16 @@ Similarly, _array_, such as the array tracking opened/blocked status of **each s
 The ONLY different is that this new _array_ will track the connected to Top/Bottom status of **each connected component**, but might NOT ~~each site~~.
 
 {% hint style="warning" %}
-At fist, i carried out a 2-dimensional `boolean[n*n][2]` to keep tracking the status of connectivity to Top/Bottom for each potential component identifier, expecting a improvement in both timing and memory. However, this turns out to use approximately `49n^2 + ～` memory, nearly **3 times worse memory use** and **double time costing** than before. 
+At fist, i carried out a 2-dimensional `boolean[n*n][2]` to keep tracking the status of connectivity to Top/Bottom for each potential component identifier, expecting a improvement in both timing and memory. However, this turns out to use approximately $$49N^2 + ～$$memory, nearly **3 times worse memory use** and **double time costing** than before. 
 {% endhint %}
 
 After analyzing, the problem here is the property of 2-dimensional array.
 
-* Creating 2-dimensional array of size _n-by-n_ grids, we will  `8n^2` bytes array reference and `16n^2` bytes subarray overhead instead of total `2n^2 + 20` bytes memory of one WeightedQuickUnionUf object
-* The order of growth of  initiliazing this 2-dimensional array will be `n^2 + 2n^2`, i guess?
+* Creating 2-dimensional array of size _n-by-n_ grids, we will $$8N^2$$ bytes array reference and $$16N^2$$ bytes subarray overhead instead of total $$2N^2 + 20$$ bytes memory of one WeightedQuickUnionUf object
+* The order of growth of  initiliazing this 2-dimensional array will be $$N^2 + 2N^2$$,  i guess?
 
 {% hint style="success" %}
-Accordingly, we decide to use two 1-dimensional boolean type array  `connectTop[]` and `connectBottom[],` which effectively use only `11n^2 + ～` memory.
+Accordingly, we decide to use two 1-dimensional boolean type array  `connectTop[]` and `connectBottom[],` which effectively use only $$11N^2 + ～$$ memory.
 {% endhint %}
 
 #### Complete code implementation
